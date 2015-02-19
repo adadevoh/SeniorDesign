@@ -4,7 +4,9 @@
 		<div class="ui two column middle aligned relaxed fitted stackable grid">
 			<div class="column">
 				<h4 class="ui dividing header">Log in</h4><!-- RETURNING USER -->
-				<form class="ui form segment" method = "post" action="index.php">
+				<form class="ui form segment" method = "post" action={{urlFor('UserLogin')}}>
+					<!--without twig == action=“$app->urlFor(‘HomePostRoute’)-->
+					<!--or /sd/home, which is hardcoding the routes, /sd cause thats the root folder -->
 					<div class="field">
 						<label>Username</label>
 						<div class="ui left icon input">
@@ -25,7 +27,7 @@
 			<div class="ui vertical divider">OR</div>
 			<div class="column">
 				<h4 class="ui dividing header">Sign up</h4><!-- FIRST TIME USER -->
-				<form class="ui form segment" method="post" action="index.php">
+				<form class="ui form segment" method="post" action={{urlFor('UserSignup')}}>
 					<div class="field">
 						<label>Firstname</label>
 						<div class="ui left icon input">

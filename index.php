@@ -5,19 +5,21 @@ require 'vendor/autoload.php';
 
 
 <?php
+// Set the view parser extensions.
+$view = new \Slim\Views\Twig();
+$view->parserExtensions = array(new \Slim\Views\TwigExtension());
+
 $app = new \Slim\Slim(array('mode' => 'development',
 							'debug' => true,
-							'view'=> new \Slim\Views\Twig(),
+							'view'=> $view,
 							'templates.path'=> 'views'
 							));
-// Set the view parser extensions.
-$app->view()->parserExtensions = array(
-   // Provided by Slim\Views
-   new \Slim\Views\TwigExtension()
-);
+
 
 $app->get('/', 'Controller\Home:display');
-$app->post('/home', 'Controller\Home:test')->name('mine');
+$app->post('/home', 'Controller\Home:test')->name('HomeTest');
+$app->post('/login','Controller\Home:login')->name('UserLogin');
+$app->post('/signup','Controller\Home:signUp')->name('UserSignup');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();
