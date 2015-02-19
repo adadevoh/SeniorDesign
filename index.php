@@ -10,6 +10,11 @@ $app = new \Slim\Slim(array('mode' => 'development',
 							'view'=> new \Slim\Views\Twig(),
 							'templates.path'=> 'views'
 							));
+// Set the view parser extensions.
+$app->view()->parserExtensions = array(
+   // Provided by Slim\Views
+   new \Slim\Views\TwigExtension()
+);
 
 $app->get('/', 'Controller\Home:display');
 $app->post('/home', 'Controller\Home:test')->name('mine');
