@@ -15,7 +15,7 @@ $app = new \Slim\Slim(array('mode' => 'development',
 							'templates.path'=> 'views'
 							));
 
-
+//dev branch test
 $app->get('/', 'Controller\Home:display');
 $app->post('/home', 'Controller\Home:test')->name('HomeTest');
 $app->post('/login','Controller\Home:login')->name('UserLogin');

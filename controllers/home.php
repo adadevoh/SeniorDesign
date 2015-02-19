@@ -7,8 +7,8 @@ class Home extends Base{
 	public function login(){
 		echo"home-login() called";
 		//sign a returning user in
-		//authenticate post data against user model, if exists return to user console
-		//if not return to login page, flash "invlaid user"
+		//authenticate post data against user model, if exists render user console
+		//if not  flash "invlaid user"
 	}
 	public function signUp(){
 		echo"home-sign up() called";
