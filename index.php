@@ -16,7 +16,7 @@ $app->post('/home', 'Controller\Home:test')->name('mine');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();
-	echo"called post<br>";
+	echo"called post from anonymous function<br>";
 	echo $app->request->params('password');
 });
 
