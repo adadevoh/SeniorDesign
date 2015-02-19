@@ -12,7 +12,13 @@ body {
 	/*word-spacing: 0.15em;*/
 
 }
-
+.ui.raised.segment{
+	margin-left:5em;
+	margin-right:5em;
+	height:inherit;
+	padding-left:5em;
+	padding-right:5em;
+}
 .ui.inverted.menu{
 	height: 45px;
 	position: fixed;

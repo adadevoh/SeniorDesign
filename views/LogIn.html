@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block UserView %}
+	<div class="column"><!--Sign up or sign in form -->
+		<div class="ui two column middle aligned relaxed fitted stackable grid">
+			<div class="column">
+				<h4 class="ui dividing header">Log in</h4><!-- RETURNING USER -->
+				<form class="ui form segment" method = "post" action="index.php">
+					<div class="field">
+						<label>Username</label>
+						<div class="ui left icon input">
+							<input type="text" placeholder="username" name="username" value="">
+							<i class="user icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<label>Password</label>
+						<div class="ui left icon input">
+							<input type ="password" name="password" value="">
+							<i class="lock icon"></i>
+						</div>
+					</div>
+					<input type="submit" class="ui blue submit button" value="Log In">
+				</form>
+			</div>
+			<div class="ui vertical divider">OR</div>
+			<div class="column">
+				<h4 class="ui dividing header">Sign up</h4><!-- FIRST TIME USER -->
+				<form class="ui form segment" method="post" action="index.php">
+					<div class="field">
+						<label>Firstname</label>
+						<div class="ui left icon input">
+							<input type="text" placeholder="Firstname" name="firstname" value="">
+							<i class="user icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<label>Lastname</label>
+						<div class="ui left icon input">
+							<input type="text" placeholder="Lastname" name="lastname" value="">
+							<i class="user icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<label>Email</label>
+						<div class="ui left icon input">
+							<input type="email" placeholder="Email" name="email" value="">
+							<i class="mail icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<label>Phone</label>
+						<div class="ui left icon input">
+							<input type="tel" placeholder="Phone" name="phone" value="">
+							<i class="call icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<label>Password</label>
+						<div class="ui left icon input">
+							<input type ="password" name="password" value="">
+							<i class="lock icon"></i>
+						</div>
+					</div>
+					<input type="submit" class="ui green submit button" value="Sign up">
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
