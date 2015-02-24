@@ -1,14 +1,4 @@
 <?php
-
-namespace Model
-class Base{
-	public function __construct(){
-		//initialize class
-	}
-}
-
-<?php
-
 /*
 	tests
 	db connection: passed

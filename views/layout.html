@@ -15,15 +15,24 @@
 			<div class="ui raised segment" id="top-content">
 				<div class="ui grid">
 					<div class="two column row">
-						<div class="column">
+						<div class="column" id="userView">
 							{% block UserView %}<!--can be log in or user console, depending on active session-->
 							{% endblock %}
 						</div>
 						<div class="ui vertical divider"></div>
-						<div class="column">
+						<div class="column" id="trolley_loc">
 							TROLLEY LAST KNOWN LOCATIONS
 						</div>						
 					</div>
+				</div>
+			</div>
+			<div class="ui raised segment" id="map">
+				<div>
+					<center>
+						{% block Map %}
+							MAP GOES HERE
+						{% endblock %}
+					</center>
 				</div>
 			</div>
 		</div>

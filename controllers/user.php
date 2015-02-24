@@ -1,6 +1,7 @@
 <?php
 namespace Controller
 class User extends Base{
+	private $session_token;
 	public function __construct(){
 
 	}
