@@ -5,10 +5,10 @@ namespace Controller;
 class Home extends Base{
 
 	public function login(){
-		echo"home-login() called";
 		//sign a returning user in
 		//authenticate post data against user model, if exists render user console
 		//if not  flash "invlaid user"
+		$this->app->render('user.html');
 	}
 	public function signUp(){
 		echo"home-sign up() called";

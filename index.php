@@ -20,6 +20,7 @@ $app->get('/', 'Controller\Home:display');
 $app->post('/home', 'Controller\Home:test')->name('HomeTest');
 $app->post('/login','Controller\Home:login')->name('UserLogin');
 $app->post('/signup','Controller\Home:signUp')->name('UserSignup');
+$app->get('/edit', 'Controller\User:edit')->name('editAccount');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();

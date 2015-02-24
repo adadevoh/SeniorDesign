@@ -1,7 +1,15 @@
 {% extends 'layout.html' %}
 {% block UserView %}
-	<div class="column">
-		<div>
+	<div class="ui grid">
+		<div class="three wide column" id="Name"><h4 class="ui header">My Name</h4></div><!--Display the users name here-->
+		<div class="three wide column">
+			<div class="ui inverted purple button"><a href={{urlFor('editAccount')}}>Account</a></div>
 		</div>
+	</div>
+	<div class="grid">
+		<h4 class="ui header">My Locations:</h4>
+		<ol id="locations">
+		</ol>
+		<div class="ui teal button">Add/Remove</div>
 	</div>
 {% endblock %}
