@@ -136,8 +136,12 @@ a{
 #footer {
 	width:100%;
 	height:50px;
-	position:absolute;
+	/*position:absolute; */
 	bottom:0;
 	left:0;
 	background:#deefff;
 }
+ #map-canvas { 
+
+	height: 400px
+	}
