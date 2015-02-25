@@ -10,6 +10,12 @@ class Home extends Base{
 		//if not  flash "invlaid user"
 		$this->app->render('user.html');
 	}
+	public function loginForm(){
+		//sign a returning user in
+		//authenticate post data against user model, if exists render user console
+		//if not  flash "invlaid user"
+		$this->app->render('login.html');
+	}
 	public function signUp(){
 		echo"home-sign up() called";
 		//starting point for creating new user

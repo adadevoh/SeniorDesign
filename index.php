@@ -15,13 +15,15 @@ $app = new \Slim\Slim(array('mode' => 'development',
 							'view'=> $view,
 							'templates.path'=> 'views'
 							));
+//$app->add(new \Middleware\AuthMiddleware());
 
 //dev branch test
 $app->get('/', 'Controller\Home:display');
-$app->post('/home', 'Controller\Home:test')->name('HomeTest');
-$app->post('/login','Controller\Home:login')->name('UserLogin');
+$app->post('/home','Controller\Home:login')->name('UserLogin');
+//$app->get('/home',  'Controller\Home:loginForm')->name('UserLoginForm');
 $app->post('/signup','Controller\Home:signUp')->name('UserSignup');
 $app->get('/edit', 'Controller\User:edit')->name('editAccount');
+//$app->post('/home', 'Controller\Home:test')->name('HomeTest');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();

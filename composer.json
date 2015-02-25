@@ -12,7 +12,8 @@
 		"psr-4": {
 			"Controller\\": "controllers",
 			"Model\\": "models",
-			"View\\": "views"
+			"View\\": "views",
+			"Middleware\\": "middleware"
 		}
 	}
 }
