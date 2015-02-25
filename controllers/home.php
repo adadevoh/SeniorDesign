@@ -18,7 +18,7 @@ class Home extends Base{
 			$this->app->render('login.html');
 		}
 		else{
-			$this->app->render('user.html');
+			$this->app->render('user.html', array("value" =>false));
 		}
 	}
 	public function loginForm(){
@@ -41,7 +41,7 @@ class Home extends Base{
 		$Email = "tsc.joshua@gmail.com";
 		//mail($Email,"TramSys",$msg);
 		//echo "mail sent";
-		$this->app->render('user.html', array("msg" => $msg));
+		$this->app->render('user.html', array("msg" => $msg, 'value' => true));
 
 
 	}
