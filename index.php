@@ -1,11 +1,8 @@
 <?php
 require 'vendor/autoload.php';
 require 'config.php';
-?>
 
 
-
-<?php
 // Set the view parser extensions.
 $view = new \Slim\Views\Twig();
 $view->parserExtensions = array(new \Slim\Views\TwigExtension());

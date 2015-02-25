@@ -10,7 +10,7 @@
 					<div class="field">
 						<label>Email</label>
 						<div class="ui left icon input">
-							<input type="email" placeholder="username" name="Email" value="">
+							<input type="email" placeholder="username" name="email" value="">
 							<i class="user icon"></i>
 						</div>
 					</div>
@@ -23,6 +23,7 @@
 					</div>
 					<input type="submit" class="ui blue submit button" value="Log In">
 				</form>
+				{% include 'LogInErr.html' %}
 			</div>
 			<div class="ui vertical divider">OR</div>
 			<div class="column">
@@ -65,6 +66,7 @@
 					</div>
 					<input type="submit" class="ui green submit button" value="Sign up">
 				</form>
+				{% include 'SignUpErr.html' %}
 			</div>
 		</div>
 	<!--</div>-->

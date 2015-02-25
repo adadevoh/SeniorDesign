@@ -5,11 +5,23 @@
 		<div class="three wide column">
 			<div class="ui inverted purple button"><a href={{urlFor('editAccount')}}>Account</a></div>
 		</div>
+		
 	</div>
+
 	<div class="grid">
+		<div class="six wide column"><!--temporary remove after demo-->
+			<div class="ui icon message success">
+				<div class="content">
+					{{msg}}
+				</div>
+			</div>
+		</div>
 		<h4 class="ui header">My Locations:</h4>
-		<ol id="locations">
-		</ol>
+		<div class="ui divided list" id="locations"><!-- over here we pull info (an array) from user controller -->
+			<!-- for each array as element -->
+
+
+		</div>
 		<div class="ui teal button">Add/Remove</div>
 	</div>
 {% endblock %}

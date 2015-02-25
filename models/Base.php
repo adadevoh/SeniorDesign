@@ -19,7 +19,7 @@ class Base{
 	protected $err_msg = null;
 	protected function __construct(){
 		try{
-			echo"base called<br>";
+			//echo"base called<br>";
 			$this->db = new \PDO(DSN, DB_USER, DB_PASS);
 			$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
 			echo"<br >PDO instantiated conected<br>";
@@ -248,8 +248,4 @@ class Base{
 	}
 
 }
-?>
-
-
-
 ?>
