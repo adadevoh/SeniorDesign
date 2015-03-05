@@ -14,17 +14,18 @@ class Home extends Base{
 		
 		$user = new \Model\User();
 		if(!$user->Authenticate($email, $pass)){
-			$this->app->flashNow("error", "invalid username/password");
-			$this->app->render('login.html');
+			//$this->app->flashNow("error", "invalid username/password");
+			//$this->app->render('login.html');
+
+			$this->app->flash('error', "invalid username/password");
+			$this->app->redirect($this->app->urlFor('UserLoginForm'));
 		}
 		else{
 			$this->app->render('user.html', array("value" =>false));
 		}
 	}
 	public function loginForm(){
-		//sign a returning user in
-		//authenticate post data against user model, if exists render user console
-		//if not  flash "invlaid user"
+		//render the login page
 		$this->app->render('login.html');
 	}
 	public function signUp(){

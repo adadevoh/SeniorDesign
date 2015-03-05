@@ -2,26 +2,35 @@
 namespace Model;
 
 class User extends \Model\Base{
-	private $locations = array();
-	//private
-	private $table = "users";
+	protected $dates = ['deleted_at'];
 
-	public function __construct(){
+
+	protected $fillable=['FirstName', 'LastName', 'phone', 'email', 'password'];
+
+	private $locations = array();
+	
+	protected $table = "users";
+
+	protected $primaryKey = "Email";
+
+	/*public function __construct(){
 		//parent::__construct();		
-	}
+	}*/
 
 	public function Authenticate($email, $pass){
-		$data = array("Email", "Password");
-		$clause = "where Email = $email and Password = $pass";
-		//echo"authenticate called true";
-		return true;
-
-		/*$cred = $this->find($data, $clause);
-
-		if($cred == false)
-			return false;
-		return $cred[0];*/
+		$user = $this->whereRaw("email = ? and password = ?", [$email, $pass])->get();
+		if($user->count() == 1){
+			if($user[0]['Email'] == $email){
+				return ($user[0]['Password'] == $pass) ? true : false ;
+			}
+		}
+		
+		return false;
 	}
+
+	/*public function find(){
+		return $this->whereRaw('email = ? and password = ?');
+	}*/
 
 	public function isAuthenticated(){
 
