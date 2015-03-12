@@ -1,6 +1,7 @@
 <?php
 //require 'vendor/autoload.php';
 require 'config.php';
+session_start();
 
 /*
 // Set the view parser extensions.
@@ -15,12 +16,16 @@ $app = new \Slim\Slim(array('mode' => 'development',
 //$app->add(new \Middleware\AuthMiddleware());
 
 //dev branch test
-$app->get('/', 'Controller\Home:display');
-$app->post('/home','Controller\Home:login')->name('UserLogin');
-$app->get('/home',  'Controller\Home:loginForm')->name('UserLoginForm');
-$app->post('/signup','Controller\Home:signUp')->name('UserSignup');
-$app->get('/edit', 'Controller\User:edit')->name('editAccount');
+//$app->get('/', 'Controller\Home:display');
+//$app->post('/home','Controller\Home:login')->name('UserLogin');
+//$app->get('/',  'Controller\Home:loginForm')->name('UserLoginForm');
+//$app->post('/signup','Controller\Home:signUp')->name('UserSignup');
+//$app->get('/edit', 'Controller\User:edit')->name('editAccount');
+//$app->get('/logout', 'Controller\Home:logout')->name('logout');
 //$app->post('/home', 'Controller\Home:test')->name('HomeTest');
+//$app->get('/home',  'Controller\Home:display')->name('home');
+
+$app->get('/', 'Controller\Home:display');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();
