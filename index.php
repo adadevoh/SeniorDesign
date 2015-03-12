@@ -17,15 +17,17 @@ $app = new \Slim\Slim(array('mode' => 'development',
 
 //dev branch test
 //$app->get('/', 'Controller\Home:display');
-//$app->post('/home','Controller\Home:login')->name('UserLogin');
-//$app->get('/',  'Controller\Home:loginForm')->name('UserLoginForm');
-//$app->post('/signup','Controller\Home:signUp')->name('UserSignup');
-//$app->get('/edit', 'Controller\User:edit')->name('editAccount');
-//$app->get('/logout', 'Controller\Home:logout')->name('logout');
+$app->post('/home','Controller\Home:login')->name('UserLogin');
+$app->get('/login',  'Controller\Home:loginForm')->name('loginForm');
+$app->post('/signup','Controller\Home:signUp')->name('UserSignup');
+$app->get('/edit', 'Controller\User:edit')->name('editAccount');
+$app->get('/logout', 'Controller\Home:logout')->name('logout');
+
 //$app->post('/home', 'Controller\Home:test')->name('HomeTest');
 //$app->get('/home',  'Controller\Home:display')->name('home');
+//$app->get('/logout', 'Controller\Home:')
 
-$app->get('/', 'Controller\Home:display');
+$app->get('/', 'Controller\Home:home')->name('home');
 
 $app->post('/',function(){
 	$app = \Slim\Slim::getInstance();

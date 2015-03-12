@@ -11,7 +11,7 @@ class User extends \Model\Base{
 	
 	protected $table = "users";
 
-	protected $primaryKey = "Email";
+	protected $primaryKey = "email";
 
 	/*public function __construct(){
 		//parent::__construct();		
@@ -30,7 +30,6 @@ class User extends \Model\Base{
 					return false;
 			}
 		}
-		//echo $user[0]['password']; die();
 		return false;
 	}
 

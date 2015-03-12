@@ -22,7 +22,7 @@ class Home extends Base{
 		if(!$user->Authenticate($email, $pass)){
 			echo"login";
 			$this->app->flash('loginerr', "invalid username/password");
-			$this->app->redirect($this->app->urlFor('UserLoginForm'));
+			$this->app->redirect($this->app->urlFor('loginForm'));
 		}
 		else{
 			$u = \Model\User::find($email);
@@ -43,7 +43,7 @@ class Home extends Base{
 
 		if($reDir['reDir']){
 			$this->app->flash('signUpErr', sprintf($reDir['err']));
-			$this->app->redirect($this->app->urlFor('UserLoginForm'));
+			$this->app->redirect($this->app->urlFor('loginForm'));
 		}
 		
 
@@ -65,19 +65,23 @@ class Home extends Base{
 		}
 	}
 
-	public function display(){
-		$isAuth = \Model\User::isAuthenticated();
+	public function home(){
+		/*$isAuth = \Model\User::isAuthenticated();
 		echo "email: " .$u = \Model\User::find($this->app->request->params('email'));
 		if($isAuth){
 			$this->app->render('user.html', array('isAuth' =>$isAuth, 'user' => $u));
 		}
 		else
-			$this->app->redirect($this->app->urlFor('UserLoginForm'));
+			$this->app->redirect($this->app->urlFor('UserLoginForm'));*/
+			$u = \Model\User::find($this->app->request->params('email'));
+			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
 	}
 
 	public function logout(){
 		session_destroy();
-		$this->app->redirect($this->app->urlFor('UserLoginForm'));
+		//$this->app->redirect($this->app->urlFor('UserLoginForm'));
+		//$this->app->render('logout.html');
+		echo"logout called";
 	}
 
 	public function test(){
