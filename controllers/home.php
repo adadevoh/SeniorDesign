@@ -26,13 +26,20 @@ class Home extends Base{
 		}
 		else{
 			$u = \Model\User::find($email);
-			$u = $this->app->user;
+			//$u = $this->app->user;
 			$this->app->render('user.html', array("isAuth" =>true, 'user' => $u));
 		}
 	}
 
 	public function loginForm(){
-		$this->app->render('login.html');
+		if(isset($_SESSION['user_id'])){
+			//$u = $_SESSION['user_id'];
+			//$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
+
+			$this->app->redirect($this->app->urlFor('home'));
+		}
+		else
+			$this->app->render('login.html');
 	}
 	
 	public function signUp(){
@@ -62,13 +69,14 @@ class Home extends Base{
 		}
 		else{
 			$this->app->flash('signUpErr', "sorry that user already exists, try a different email");
-			$this->app->redirect($this->app->urlFor('UserLoginForm'));			
+			$this->app->redirect($this->app->urlFor('loginForm'));			
 		}
 	}
 
 	public function home(){
 		if(isset($_SESSION['user_id'])){
-			$u = $_SESSION['user_id'];
+			$u = $_SESSION['user_id'];//var_dump($this->app->user); die();
+			$u = $this->app->user;
 			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
 		}
 		else

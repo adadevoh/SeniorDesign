@@ -17,20 +17,21 @@
 			<div class="ui raised segment" id="top-content">
 				<div class="ui grid">
 					<div class="two column row">
-						{%if isAuth %}
+						<div class="column" id="userView">
+							{% block UserView %}<!--can be log in or user console, depending on active session-->
+							{% endblock %}
+						</div>
+						<div class="ui vertical divider"></div>
+
+						<div class="column" id="trolley_loc">
+							{%if isAuth %}
 								<div class="ui blue button" style="float:right">
 									<a style ="color:white" href={{urlFor('logout')}}>
 										logout
 									</a>
 								</div>
 							{% endif %}
-						<div class="column" id="userView">
-							{% block UserView %}<!--can be log in or user console, depending on active session-->
-							{% endblock %}
-						</div>
-						<div class="ui vertical divider"></div>
-						<div class="column" id="trolley_loc">
-							TROLLEY LAST KNOWN LOCATIONS
+							TROLLEY LAST KNOWN LOCATIONs
 						</div>						
 					</div>
 				</div>
