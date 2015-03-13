@@ -75,7 +75,7 @@ class Home extends Base{
 
 	public function home(){
 		if(isset($_SESSION['user_id'])){
-			$u = $_SESSION['user_id'];//var_dump($this->app->user); die();
+			//$u = $_SESSION['user_id'];//var_dump($this->app->user); die();
 			$u = $this->app->user;
 			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
 		}

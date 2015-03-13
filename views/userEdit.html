@@ -1,3 +1,41 @@
 {% extends 'layout.html' %}
 {% block UserView %}
+	<div class="ui grid">
+		<div class="five wide column" id="Name"><h4 class="ui header">{{user.firstname}} {{user.lastname}}</h4></div>
+		
+	</div>
+	<form class="ui form" method="post" action={{urlFor('userSave')}} style="padding-top:2em; ">
+		<div class="two fields">
+			<div class="field">
+				<div class="two fields">
+					<div class="field">
+						<label>Firstname</label>
+						<input type = "text" name="firstname" placeholder ={{user.firstname}}>
+					</div>
+					<div class="field">
+						<label>Lastname</label>
+						<input type = "text" name="lastname" placeholder={{user.lastname}}>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+				<label>Phone</label>
+				<input type="email" name="tel" placeholder ={{user.phone}}>
+			</div>
+		</div>
+		<div class="two fields">
+			<div class="field">
+				<label>Email</label>
+				<input type="email" name="email" placeholder ={{user.email}}>
+			</div>
+			<div class="field">
+				<label>Password</label>
+				<input type="password" name="password" placeholder ="">
+			</div>
+		</div>	
+		
+		<input type="submit" value="save" class="ui green submit button">
+					
+	</form>
+
 {% endblock %}

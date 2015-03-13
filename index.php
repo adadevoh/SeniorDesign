@@ -14,6 +14,7 @@ $app->post('/signup','Controller\Home:signUp')->name('UserSignup');
 $app->get('/', 'Controller\Home:home')->name('home');
 $app->get('/home','Controller\Home:home')/*->name('test')*/;
 $app->get('/edit', 'Controller\User:edit')->name('editAccount');
+$app->post('/save', 'Controller\User:save')->name('userSave');
 $app->get('/logout', 'Controller\Home:logout')->name('logout');
 
 
