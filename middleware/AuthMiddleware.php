@@ -19,9 +19,9 @@ class AuthMiddleware extends \Slim\Middleware {
 				/*if($_SESSION['user_id']){
 					$app->redirect($app->urlFor('home'));
 				}*/
-				//$app->user = \Model\User::findOrNew($_SESSION['user_id']);// var_dump($app->user); die();
+				$app->user = \Model\User::findOrNew($_SESSION['user_id']);// var_dump($app->user); die();
 				//echo"firstname: ".$app->user->firstname;
-           	}$app->user = \Model\User::findOrNew($_SESSION['user_id']);// var_dump($app->user); die();
+           	}//$app->user = \Model\User::findOrNew($_SESSION['user_id']);// var_dump($app->user); die();
 		};
         $app->hook('slim.before.dispatch', $requireAuth);
 		$this->next->call();//echo "Middleware1"; die();
