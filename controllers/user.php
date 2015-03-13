@@ -21,19 +21,19 @@ class User extends Base{
 	public function save(){
 		$user = $this->app->user;
 		if($this->app->request->params('email') != ''){
-			"email: ".$user->email = $this->app->request->params('email');
+			$user->email = $this->app->request->params('email');
 		}
 		if($this->app->request->params('password') != ''){
-			"password: ".$user->password = $this->app->request->params('password');
+			$user->password = $this->app->request->params('password');
 		}
 		if($this->app->request->params('firstname') != ''){
-			"firstname: ".$user->firstname = $this->app->request->params('firstname');
+			$user->firstname = $this->app->request->params('firstname');
 		}
 		if($this->app->request->params('lastname') != ''){
-			"lastname: ".$user->lastname = $this->app->request->params('lastname');
+			$user->lastname = $this->app->request->params('lastname');
 		}
 		if($this->app->request->params('phone') != ''){
-			"phone: ".$user->phone = $this->app->request->params('phone');
+			$user->phone = $this->app->request->params('phone');
 		}
 
 		$user->save();
