@@ -15,17 +15,18 @@ class Home extends Base{
 	public function login(){
 		
 		$email = $this->app->request->params('email');
-		$pass = $this->app->request->params('password');
+		$pass = $this->app->request->params('password');//die();
 
 		
 		$user = new \Model\User();
 		if(!$user->Authenticate($email, $pass)){
-			echo"login";
+			//echo"login";die();
 			$this->app->flash('loginerr', "invalid username/password");
 			$this->app->redirect($this->app->urlFor('loginForm'));
 		}
 		else{
 			$u = \Model\User::find($email);
+			$u = $this->app->user;
 			$this->app->render('user.html', array("isAuth" =>true, 'user' => $u));
 		}
 	}
@@ -66,15 +67,12 @@ class Home extends Base{
 	}
 
 	public function home(){
-		/*$isAuth = \Model\User::isAuthenticated();
-		echo "email: " .$u = \Model\User::find($this->app->request->params('email'));
-		if($isAuth){
-			$this->app->render('user.html', array('isAuth' =>$isAuth, 'user' => $u));
+		if(isset($_SESSION['user_id'])){
+			$u = $_SESSION['user_id'];
+			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
 		}
 		else
-			$this->app->redirect($this->app->urlFor('UserLoginForm'));*/
-			$u = \Model\User::find($this->app->request->params('email'));
-			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
+			$this->app->redirect($this->app->urlFor('loginForm'));
 	}
 
 	public function logout(){
