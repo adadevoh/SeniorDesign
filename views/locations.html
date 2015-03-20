@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block UserView %}
+	<div class="ui grid">
+		<div class="five wide column" id="Name"><h4 class="ui header">{{user.firstname}} {{user.lastname}}</h4></div>
+		<div class="ui green button" style=" margin:1em; float:right;">
+			<a style ="color:white" href={{urlFor('home')}}>
+				Home
+			</a>
+		</div>		
+	</div>	
+	
+	<!--<div class="grid">-->
+		<h4 class="ui header">Locations:</h4>
+		<form class="ui form">
+
+			<div class="two fields">
+				<div class="field">
+					<label>Clemente</label>
+					<select class="ui search dropdown">
+						<option value="">Time</option>
+						<option vlaue="9">9:00</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	<!--</div>-->
+	
+{% endblock %}

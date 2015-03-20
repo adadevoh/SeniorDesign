@@ -6,7 +6,7 @@ session_start();
  
 
 
-$app->get('/login',  'Controller\Home:loginForm')->name('loginForm');
+$app->get('/login',  '\Controller\Home:loginForm')->name('loginForm');
 
 $app->post('/home','Controller\Home:login')->name('UserLogin');
 $app->post('/signup','Controller\Home:signUp')->name('UserSignup');
@@ -16,6 +16,7 @@ $app->get('/home','Controller\Home:home')/*->name('test')*/;
 $app->get('/edit', 'Controller\User:edit')->name('editAccount');
 $app->post('/save', 'Controller\User:save')->name('userSave');
 $app->get('/logout', 'Controller\Home:logout')->name('logout');
+$app->get('/locations', 'Controller\User:locations')->name('editLocations');
 
 
 

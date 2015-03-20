@@ -14,9 +14,12 @@ class User extends Base{
 		//authentiate user against user in db
 	}
 	public function edit(){
-		echo"user edit called";
 		$u = $this->app->user;
 		$this->app->render('userEdit.html', array('isAuth' =>true, 'user' => $u));
+	}
+	public function locations(){
+		$u = $this->app->user;
+		$this->app->render('locations.html', array('isAuth' =>true,'user'=>$u));
 	}
 	public function save(){
 		$user = $this->app->user;

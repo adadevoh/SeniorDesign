@@ -33,9 +33,6 @@ class Home extends Base{
 
 	public function loginForm(){
 		if(isset($_SESSION['user_id'])){
-			//$u = $_SESSION['user_id'];
-			//$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
-
 			$this->app->redirect($this->app->urlFor('home'));
 		}
 		else
@@ -45,7 +42,6 @@ class Home extends Base{
 	public function signUp(){
 		$user = new \Model\User();
 		
-
 		$reDir = $this->validate();
 
 
@@ -64,6 +60,12 @@ class Home extends Base{
 							    "email" => $this->app->request->params('email'),
 							    "phone" => $this->app->request->params('phone')]);
 
+			//
+			$u = \Model\User::find($this->app->request->params('email'));
+			echo"email: ". $u->email;//die();
+
+			$_SESSION['user_id'] = $u->email;
+
 			$this->app->render('user.html', array("user" =>$u));
 			//$this->sendMail();
 		}
@@ -75,7 +77,6 @@ class Home extends Base{
 
 	public function home(){
 		if(isset($_SESSION['user_id'])){
-			//$u = $_SESSION['user_id'];//var_dump($this->app->user); die();
 			$u = $this->app->user;
 			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
 		}
@@ -84,10 +85,9 @@ class Home extends Base{
 	}
 
 	public function logout(){
-		session_destroy();
-		//$this->app->redirect($this->app->urlFor('UserLoginForm'));
-		//$this->app->render('logout.html');
+		$this->app->render('logout.html');
 		echo"logout called";
+		session_destroy();
 	}
 
 	public function test(){
@@ -97,8 +97,6 @@ class Home extends Base{
 	/* ---------- utility functions ------------------ */
 
 	private function sendMail(){
-		//Send user confirmation email after account creation
-		// use wordwrap() if lines are longer than 70 characters
 		$msg = "Thank you for Signing Up.";
 		$msg = wordwrap($msg,100);
 

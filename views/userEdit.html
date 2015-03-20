@@ -1,8 +1,7 @@
 {% extends 'layout.html' %}
 {% block UserView %}
 	<div class="ui grid">
-		<div class="five wide column" id="Name"><h4 class="ui header">{{user.firstname}} {{user.lastname}}</h4></div>
-		
+		<div class="five wide column" id="Name"><h4 class="ui header">{{user.firstname}} {{user.lastname}}</h4></div>		
 	</div>
 	<form class="ui form" method="post" action={{urlFor('userSave')}} style="padding-top:2em; ">
 		<div class="two fields">
@@ -34,9 +33,7 @@
 			</div>
 		</div>	
 		
-		<!--<input type="submit" value="save" class="ui green submit button">-->
-		<div class="ui buttons">
- 
+		<div class="ui buttons"> 
 			<input type="submit" value="cancel" class="ui red submit button" href="{{ urlFor('home') }}">
 			<div class="or"></div>
 			<input type="submit" value="save" class="ui green submit button">

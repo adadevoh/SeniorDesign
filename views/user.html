@@ -9,21 +9,13 @@
 	</div>
 
 	<div class="grid">
-		{% if value %}
-		<div class="six wide column"><!--temporary remove after demo-->
-			<div class="ui icon message success">
-				<div class="content">
-					{{msg}}
-				</div>
-			</div>
-		</div>
-		{% endif %}
+		
 		<h4 class="ui header">My Locations:</h4>
 		<div class="ui divided list" id="locations"><!-- over here we pull info (an array) from user controller -->
 			<!-- for each array as element -->
 
 
 		</div>
-		<div class="ui teal button">Add/Remove</div>
+		<div class="ui teal button"><a href={{urlFor('editLocations')}} style="color:white;">Add/Remove</a></div>
 	</div>
 {% endblock %}
