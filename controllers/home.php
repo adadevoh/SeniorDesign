@@ -3,8 +3,6 @@
 namespace Controller;
 
 class Home extends Base{
-
-	//private $email = \Slim\Slim::getInstance()->request->params('email');
 	private $email;
 
 	public function __construct(){
@@ -20,13 +18,11 @@ class Home extends Base{
 		
 		$user = new \Model\User();
 		if(!$user->Authenticate($email, $pass)){
-			//echo"login";die();
 			$this->app->flash('loginerr', "invalid username/password");
 			$this->app->redirect($this->app->urlFor('loginForm'));
 		}
 		else{
 			$u = \Model\User::find($email);
-			//$u = $this->app->user;
 			$this->app->render('user.html', array("isAuth" =>true, 'user' => $u));
 		}
 	}
@@ -78,16 +74,16 @@ class Home extends Base{
 	public function home(){
 		if(isset($_SESSION['user_id'])){
 			$u = $this->app->user;
-			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u));
+			$l = \Model\Locations::where('user', '=', $u->email)->get();
+			$this->app->render('user.html', array('isAuth' =>true, 'user' => $u, 'locations' =>$l));
 		}
 		else
 			$this->app->redirect($this->app->urlFor('loginForm'));
 	}
 
 	public function logout(){
-		$this->app->render('logout.html');
-		echo"logout called";
 		session_destroy();
+		$this->app->render('logout.html');
 	}
 
 	public function test(){

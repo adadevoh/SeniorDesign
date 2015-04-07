@@ -17,6 +17,8 @@ $app->get('/edit', 'Controller\User:edit')->name('editAccount');
 $app->post('/save', 'Controller\User:save')->name('userSave');
 $app->get('/logout', 'Controller\Home:logout')->name('logout');
 $app->get('/locations', 'Controller\User:locations')->name('editLocations');
+$app->post('/locations', 'Controller\User:saveLoc')->name('saveLocations');
+$app->post('/deleteLocations', 'Controller\User:deleteLocation')->name('deleteLocation');
 
 
 

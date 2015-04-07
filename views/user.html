@@ -9,10 +9,33 @@
 	</div>
 
 	<div class="grid">
-		
+		{% include 'error.html' %}
 		<h4 class="ui header">My Locations:</h4>
+		<table class="ui small table segment users striped">
+			<tbody>
+			{% for location in locations %}
+				<tr>
+					<td>
+						{{location.location}}
+					</td>
+					<td>
+						{{location.id}}
+					</td>
+					<td>
+						<form class="ui form" method="post" action={{urlFor('deleteLocation')}}>
+							<input type="submit" class="ui tiny red button" value="delete">
+							<input type="hidden" name="locationID" value = "{{location.id}}">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		
+		
 		<div class="ui divided list" id="locations"><!-- over here we pull info (an array) from user controller -->
 			<!-- for each array as element -->
+			
 
 
 		</div>

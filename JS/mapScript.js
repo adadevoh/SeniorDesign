@@ -15,6 +15,41 @@ $(document).ready(function(){
 
 });
 
+
+//coordinates 
+/*
+	var socket = io('http://localhost:1345');
+	socket.on('coordinates', updateMap);
+*/
+
+function updateMap(data) {
+
+}
+
+/*
+function success(data){
+	//data = gps coordinates
+	var googleLatLng = new google.maps.LatLng(data);
+	var mapOptions = {
+		zoom		: 18,
+		center 		: googleLatLng,
+		scaleControl: false,
+		scrollwheel: false,
+		mapTypeId 	: google.maps.MapTypeId.ROAD,
+		
+	}
+
+	var pMap = document.getElementById("map-canvas");
+
+	var map = new google.maps.Map(pMap, mapOptions);
+	addMarker(map, googleLatLng, "Trolley");	
+	
+	
+
+}
+
+*/
+
 function success(){
 	
 	var x = get_x();
