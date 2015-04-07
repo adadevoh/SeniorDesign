@@ -4,14 +4,20 @@
 		<div class="five wide column" id="Name"><h4 class="ui header">{{user.firstname}} {{user.lastname}}</h4></div>
 		<div class="column">
 			<div class="ui inverted purple button"><a href={{urlFor('editAccount')}}>Account</a></div>
-		</div>
-		
+		</div>		
 	</div>
 
 	<div class="grid">
 		{% include 'error.html' %}
 		<h4 class="ui header">My Locations:</h4>
 		<table class="ui small table segment users striped">
+			<thead>
+				<tr>
+					<th>Location</th>
+					<th>Location ID</th>
+					<th>Action</th>
+				</tr>
+			</thead>
 			<tbody>
 			{% for location in locations %}
 				<tr>
@@ -31,14 +37,6 @@
 			{% endfor %}
 			</tbody>
 		</table>
-		
-		
-		<div class="ui divided list" id="locations"><!-- over here we pull info (an array) from user controller -->
-			<!-- for each array as element -->
-			
-
-
-		</div>
-		<div class="ui teal button"><a href={{urlFor('editLocations')}} style="color:white;">Add/Remove</a></div>
+		<div class="ui teal button"><a href={{urlFor('editLocations')}} style="color:white;">Add</a></div>
 	</div>
 {% endblock %}

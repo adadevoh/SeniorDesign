@@ -23,7 +23,8 @@ class Home extends Base{
 		}
 		else{
 			$u = \Model\User::find($email);
-			$this->app->render('user.html', array("isAuth" =>true, 'user' => $u));
+			$l = \Model\Locations::where('user', '=', $u->email)->get();
+			$this->app->render('user.html', array("isAuth" =>true, 'user' => $u, 'locations' =>$l));
 		}
 	}
 
