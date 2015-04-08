@@ -9,7 +9,7 @@
 
 		<script type="text/javascript" src="vendor/semantic/ui/dist/semantic.js"></script>
 
-		<script src="http://localhost:1345/socket.io/socket.io.js"></script>
+		<script src="http://localhost:1346/socket.io/socket.io.js"></script>
 
 		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 
@@ -17,17 +17,28 @@
 
 
 		<script>
-			var socket = io('http://localhost:1346');
-			socket.on('def', function (data) {
+
+		var socket = io('http://localhost:1346');
+			socket.on('data', function (data) {
 				console.log(data);
 				socket.emit('event', { my: 'data' });
 			});
-
-			var socket = io('http://localhost:1345');
+			/*var socket = io('http://localhost:1345');
 			socket.on('def', function (data) {
 				console.log(data);
 				socket.emit('event',12333);
-			});
+			});*/
+			/*var socket = io('http://localhost:1346');
+			socket.on('def', function (data) {
+				console.log(data);
+				socket.emit('event', { my: 'data' });
+			});*/
+
+			/*var socket = io('http://localhost:1346');
+			socket.on('event1', function (data) {
+				console.log(data);
+				socket.emit('event',data);
+			});*/
 
 			/*
 				var socket = io('http://localhost:1376');

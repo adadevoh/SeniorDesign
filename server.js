@@ -1,29 +1,57 @@
-var app = require('http').createServer(handler)
+var net = require('net');
 
-var io = require('socket.io')(app);
+var HOST = 'localhost';
+var PORT = 1345;
 
-var fs = require('fs');
+net.createServer(function(sock){
+	console.log('connected! ' + sock.remoteAddress + ':' + sock.remotePort);
 
-app.listen(1345);
-console.log("server listening");
+	sock.on('data', function(data){
+		console.log('DATA: ' + sock.remoteAddress + ':' + data);
 
-function handler (req, res) {
-	res.end();
-  
-}
-io.on('connection', function(socket){
+		sock.write('you said: ' + data);
 
-	socket.emit('def','test');
+		/*scket io segment*/
+		var app = require('http').createServer(handler)
 
-	socket.on('event', function(data){
-		console.log(data);
-	});
+		var io = require('socket.io')(app);
 
-	socket.on('pyevent', function(data){
-		console.log(data);
-	});
-	
-});
+		var fs = require('fs');
+
+		app.listen(1346);
+		console.log("node server listening too");
+
+		function handler (req, res) {
+			res.end();
+
+			return;
+		  
+		}
+
+		io.on('connection', function(socket){
+
+			socket.emit('data','test');
+
+			socket.on('event', function(data){
+				console.log(data);
+				//return;
+			});
+			//return;
+
+			//setTimeout(socket.disconnect('unauthorized'), 10000 );
+
+			
+			
+		});
+		/*end socket IO segment */
+
+	})
+}).listen(PORT, HOST);
+
+console.log('Server listening on ' + HOST +':'+ PORT);
+
+
+/*socket  io segment */
 
 /*io.on('connection', function (socket) {
 	socket.emit('news', { hello: 'world' }); //sending to web client

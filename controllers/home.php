@@ -57,7 +57,6 @@ class Home extends Base{
 							    "email" => $this->app->request->params('email'),
 							    "phone" => $this->app->request->params('phone')]);
 
-			//
 			$u = \Model\User::find($this->app->request->params('email'));
 			echo"email: ". $u->email;//die();
 
