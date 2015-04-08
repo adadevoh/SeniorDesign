@@ -1,6 +1,6 @@
 <?php
 //require 'vendor/autoload.php';
-require 'config.php';
+require 'config_real.php';
 session_start();
 
  

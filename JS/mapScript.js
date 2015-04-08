@@ -1,33 +1,5 @@
-//var googleMap = require();
 
-/*var net = require('net');
 
-var HOST = '127.0.0.1';
-var PORT = 1345;
-
-var client = new net.Socket();
-client.connect(PORT, HOST, function() {
-
-    console.log('CONNECTED TO: ' + HOST + ':' + PORT);
-    // Write a message to the socket as soon as the client is connected, the server will receive it as message from the client 
-    client.write('I am Chuck Norris!');
-
-});
-
-// Add a 'data' event handler for the client socket
-// data is what the server sent to this socket
-client.on('data', function(data) {
-    
-    console.log('DATA: ' + data);
-    // Close the client socket completely
-    client.destroy();
-    
-});
-
-// Add a 'close' event handler for the client socket
-client.on('close', function() {
-    console.log('Connection closed');
-});*/
 
 var myVar = setInterval(function(){ success() }, 10000);
 
@@ -45,19 +17,24 @@ $(document).ready(function(){
 
 });
 
+var socket = io('http://localhost:1346');//initialize socket
+socket.on('coordinates', function (data) {
+	//console.log(data);
+	data = JSON.parse(data);
+	console.log(data[0]);
+	socket.emit('response', { client: data });
+});
 
 //coordinates 
 /*
-	var socket = io('http://localhost:1345');
-	socket.on('coordinates', updateMap);
+var socket = io('http://localhost:1346');//initialize socket
+socket.on('coordinates', updateMap);
 */
-
-function updateMap(data) {
-
-}
 
 /*
 function success(data){
+	console.log(data);//log coordinates to browser console
+	socket.emit('data', { my: 'location log' });//return coordinates to socketIO server to confirm it recieved 
 	//data = gps coordinates
 	var googleLatLng = new google.maps.LatLng(data);
 	var mapOptions = {

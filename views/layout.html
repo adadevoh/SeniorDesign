@@ -15,17 +15,6 @@
 
 		<script type="text/javascript" src="JS/mapScript.js"></script>
 
-
-		<script>
-
-		var socket = io('http://localhost:1346');//initialize socket
-			socket.on('data', function (data) {
-				console.log(data);
-				socket.emit('data', { my: 'data' });
-			});
-		</script>
-
-
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('.ui.dropdown').dropdown();

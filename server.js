@@ -24,19 +24,22 @@ var io = require('socket.io').listen(1346, function(){
 
 // create tcp server
 net.createServer(function(sock){
-	console.log('connected! ' + sock.remoteAddress + ':' + sock.remotePort);
+	console.log('connected! ' + sock.remoteAddress + ': ' + sock.remotePort);
 
 	sock.on('data', function(data){
-		console.log('DATA: ' + sock.remoteAddress + ':' + data);
+		console.log('DATA: ' + sock.remoteAddress + ': ' + data);
 
 		sock.write('you said: ' + data);		
+
+		data = data.toString();
 
 
 		io.on('connection', function(socket){
 
-			socket.emit('data','test');
+			//socket.emit('coordinates', JSON.stringify(data));
+			socket.emit('coordinates', data);
 
-			socket.on('data', function(data){
+			socket.on('response', function(data){
 				console.log(data);
 			});		
 			
