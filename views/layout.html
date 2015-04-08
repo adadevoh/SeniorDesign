@@ -18,32 +18,11 @@
 
 		<script>
 
-		var socket = io('http://localhost:1346');
+		var socket = io('http://localhost:1346');//initialize socket
 			socket.on('data', function (data) {
 				console.log(data);
-				socket.emit('event', { my: 'data' });
+				socket.emit('data', { my: 'data' });
 			});
-			/*var socket = io('http://localhost:1345');
-			socket.on('def', function (data) {
-				console.log(data);
-				socket.emit('event',12333);
-			});*/
-			/*var socket = io('http://localhost:1346');
-			socket.on('def', function (data) {
-				console.log(data);
-				socket.emit('event', { my: 'data' });
-			});*/
-
-			/*var socket = io('http://localhost:1346');
-			socket.on('event1', function (data) {
-				console.log(data);
-				socket.emit('event',data);
-			});*/
-
-			/*
-				var socket = io('http://localhost:1376');
-				socket.on('coordinates', success)
-			*/
 		</script>
 
 
