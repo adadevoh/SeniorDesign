@@ -29,7 +29,7 @@ class Home extends Base{
 	}
 
 	public function loginForm(){
-		if(isset($_SESSION['user_id'])){
+		if(isset($_SESSION['user_id'])){echo"log in form";
 			$this->app->redirect($this->app->urlFor('home'));
 		}
 		else
@@ -108,23 +108,23 @@ class Home extends Base{
 		$reDir = false;
 		$res = array('err' => $err,
 					 'reDir' => $reDir);
-		if(empty($this->app->request->params('firstname'))){
+		if($this->app->request->params('firstname') == NULL){
 			$err = $err. "\n Please enter a valid firstname";
 			$reDir = true;
 		}
-		if(empty($this->app->request->params('lastname'))){
+		if($this->app->request->params('lastname') == NULL){
 			$err .="\n Please enter a valid lastname";
 			$reDir = true;				
 		}
-		if(empty($this->app->request->params('email'))){
+		if($this->app->request->params('email') == NULL){
 			$err .="\n Please enter a valid email";
 			$reDir = true;
 		}
-		if(empty($this->app->request->params('password'))){
+		if($this->app->request->params('password') == NULL){
 			$err .="\n Please enter a valid password";
 			$reDir = true;
 		}
-		if(empty($this->app->request->params('phone'))){
+		if($this->app->request->params('phone') == NULL){
 			$err .="\n\n Please enter a valid phone number";
 			$reDir = true;
 		}

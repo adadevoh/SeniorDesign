@@ -1,67 +1,21 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
-1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'browserfy' ]
-2 info using npm@1.4.3
-3 info using node@v0.10.26
-4 verbose node symlink C:\Program Files\nodejs\\node.exe
-5 verbose cache add [ 'browserfy', null ]
-6 verbose cache add name=undefined spec="browserfy" args=["browserfy",null]
-7 verbose parsed url { protocol: null,
-7 verbose parsed url   slashes: null,
-7 verbose parsed url   auth: null,
-7 verbose parsed url   host: null,
-7 verbose parsed url   port: null,
-7 verbose parsed url   hostname: null,
-7 verbose parsed url   hash: null,
-7 verbose parsed url   search: null,
-7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'browserfy',
-7 verbose parsed url   path: 'browserfy',
-7 verbose parsed url   href: 'browserfy' }
-8 silly lockFile 2feae5c7-browserfy browserfy
-9 verbose lock browserfy C:\Users\tscjo_000\AppData\Roaming\npm-cache\2feae5c7-browserfy.lock
-10 silly lockFile 2feae5c7-browserfy browserfy
-11 silly lockFile 2feae5c7-browserfy browserfy
-12 verbose addNamed [ 'browserfy', '' ]
-13 verbose addNamed [ null, '*' ]
-14 silly lockFile 21be378c-browserfy browserfy@
-15 verbose lock browserfy@ C:\Users\tscjo_000\AppData\Roaming\npm-cache\21be378c-browserfy.lock
-16 silly addNameRange { name: 'browserfy', range: '*', hasData: false }
-17 verbose url raw browserfy
-18 verbose url resolving [ 'https://registry.npmjs.org/', './browserfy' ]
-19 verbose url resolved https://registry.npmjs.org/browserfy
-20 info trying registry request attempt 1 at 18:33:12
-21 http GET https://registry.npmjs.org/browserfy
-22 http 404 https://registry.npmjs.org/browserfy
-23 silly registry.get cb [ 404,
-23 silly registry.get   { date: 'Tue, 07 Apr 2015 22:33:12 GMT',
-23 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-23 silly registry.get     'content-type': 'application/json',
-23 silly registry.get     'cache-control': 'max-age=0',
-23 silly registry.get     'content-length': '51',
-23 silly registry.get     'accept-ranges': 'bytes',
-23 silly registry.get     via: '1.1 varnish',
-23 silly registry.get     age: '0',
-23 silly registry.get     'x-served-by': 'cache-ord1728-ORD',
-23 silly registry.get     'x-cache': 'MISS',
-23 silly registry.get     'x-cache-hits': '0',
-23 silly registry.get     'x-timer': 'S1428445992.846090,VS0,VE70',
-23 silly registry.get     'keep-alive': 'timeout=10, max=50',
-23 silly registry.get     connection: 'Keep-Alive' } ]
-24 silly lockFile 21be378c-browserfy browserfy@
-25 silly lockFile 21be378c-browserfy browserfy@
-26 error 404 'browserfy' is not in the npm registry.
-26 error 404 You should bug the author to publish it
-26 error 404
-26 error 404 Note that you can also install from a
-26 error 404 tarball, folder, or http url, or git url.
-27 error System Windows_NT 6.2.9200
-28 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "browserfy"
-29 error cwd C:\wamp\www\SeniorDesign
-30 error node -v v0.10.26
-31 error npm -v 1.4.3
-32 error code E404
-33 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 error install Couldn't read dependencies
+5 error Failed to parse json
+5 error Unexpected token {
+6 error File: /var/www/html/SeniorDesign/package.json
+7 error Failed to parse package.json data.
+7 error package.json must be actual JSON, not just JavaScript.
+7 error
+7 error This is not a bug in npm.
+7 error Tell the package author to fix their package.json file. JSON.parse
+8 error System Linux 3.10.0-123.8.1.el7.x86_64
+9 error command "/usr/bin/node" "/usr/bin/npm" "install"
+10 error cwd /var/www/html/SeniorDesign
+11 error node -v v0.10.38
+12 error npm -v 1.4.28
+13 error file /var/www/html/SeniorDesign/package.json
+14 error code EJSONPARSE
+15 verbose exit [ 1, true ]

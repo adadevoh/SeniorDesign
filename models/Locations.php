@@ -5,7 +5,7 @@ class Locations extends \Model\Base{
 	protected $dates = ['deleted_at'];
 
 
-	protected $fillable=['user', 'location'];
+	protected $fillable=['user', 'location', 'time'];
 	
 	protected $table = "locations";
 

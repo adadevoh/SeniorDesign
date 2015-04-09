@@ -17,6 +17,7 @@ class User extends \Model\Base{
 		//parent::__construct();		
 	}*/
 
+
 	public function Authenticate($email, $pass){
 		$user = $this->whereRaw("email = ? and password = ?", [$email, $pass])->get();//var_dump($user);
 		

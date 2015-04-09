@@ -1,7 +1,5 @@
-
-
-
-var myVar = setInterval(function(){ success() }, 10000);
+//var googleMap = require();
+var myVar = setInterval(function(){ drawChart() }, 10000);
 
 $(document).ready(function(){
 	if(navigator.geolocation){
@@ -10,77 +8,12 @@ $(document).ready(function(){
 			timeout 			: Infinity,
 			maximumAge 			: 0
 		};
-		navigator.geolocation.watchPosition(success, fail, option);
+		navigator.geolocation.watchPosition(drawChart, fail, option);
 	}
 	else
 		$("div#map-canvas").html("HTML5 NOT Supported");
 
 });
-
-var socket = io('http://localhost:1346');//initialize socket
-socket.on('coordinates', function (data) {
-	//console.log(data);
-	data = JSON.parse(data);
-	console.log(data[0]);
-	socket.emit('response', { client: data });
-});
-
-//coordinates 
-/*
-var socket = io('http://localhost:1346');//initialize socket
-socket.on('coordinates', updateMap);
-*/
-
-/*
-function success(data){
-	console.log(data);//log coordinates to browser console
-	socket.emit('data', { my: 'location log' });//return coordinates to socketIO server to confirm it recieved 
-	//data = gps coordinates
-	var googleLatLng = new google.maps.LatLng(data);
-	var mapOptions = {
-		zoom		: 18,
-		center 		: googleLatLng,
-		scaleControl: false,
-		scrollwheel: false,
-		mapTypeId 	: google.maps.MapTypeId.ROAD,
-		
-	}
-
-	var pMap = document.getElementById("map-canvas");
-
-	var map = new google.maps.Map(pMap, mapOptions);
-	addMarker(map, googleLatLng, "Trolley");	
-	
-	
-
-}
-
-*/
-
-function success(){
-	
-	var x = get_x();
-	var y = get_y();
-
-	var googleLatLng = new google.maps.LatLng(x,
-											  y);
-	var mapOptions = {
-		zoom		: 18,
-		center 		: googleLatLng,
-		scaleControl: false,
-		scrollwheel: false,
-		mapTypeId 	: google.maps.MapTypeId.ROAD,
-		
-	}
-
-	var pMap = document.getElementById("map-canvas");
-
-	var map = new google.maps.Map(pMap, mapOptions);
-	addMarker(map, googleLatLng, "Trolley");	
-	
-	
-
-}
 
 function addMarker(map, googleLatLng, title){
 	var markerOptions = {
@@ -112,64 +45,42 @@ function fail(error){
 	$("div#map-canvas").html(errMsg);
 }
 
-function get_x()
-{
-	var d = new Date();
-	var n = d.getHours();
-	var m = d.getMinutes();
-	var s = d.getSeconds();
-	
-	console.log(s);
-	
-	if( s >= 0 && s <= 9){
-		var x = 28.063211;
-	}
-	if( s >= 10 && s <= 19){
-		var x = 28.062757;
-	}
-	if( s >= 20 && s <= 29){
-		var x = 28.063403;
-	}
-	if( s >= 30 && s <= 39){
-		var x = 28.064230;
-	}
-	if( s >= 40 && s <= 49){
-		var x = 28.065662;
-	}
-	if( s >= 50 && s <= 59){
-		var x = 28.067591;
-	}
-	
-	return x;
-	
-}
+// onload callback
+function drawChart() {
 
-function get_y(){
-	var d = new Date();
-	var n = d.getHours();
-	var m = d.getMinutes();
-	var s = d.getSeconds();
-	
-	if( s >= 0 && s <= 9){
-		var y = -80.623880;
-	}
-	if( s >= 10 && s <= 19){
-		var y = -80.622929;
-	}
-	if( s >= 20 && s <= 29){
-		var y = -80.620757;
-	}
-	if( s >= 30 && s <= 39){
-		var y = -80.623130;
-	}
-	if( s >= 40 && s <= 49){
-		var y = -80.624871;
-	}
-	if( s >= 50 && s <= 59){
-		var y = -80.624643;
-	}
+	var public_key = 'KJ6nqR7MX7hbbNd5gz4n';
+
+	 // JSONP request
+	 var jsonData = $.ajax({
+		url: 'https://data.sparkfun.com/output/' + public_key + '/latest.json',
+		data: {page: 1},
+		dataType: 'jsonp',
+		}).done(function (results) {
+				
+	// loop through results and log temperature to the console
+			$.each(results, function (index, row) {
+				var a =  parseFloat(row.lat);
+				var b =  parseFloat(row.lon);
+				console.log(a);
+				console.log(b);
+				console.log(row.timestamp);
+
+	var googleLatLng = new google.maps.LatLng(b,
+											  a);
+	var mapOptions = {
+		zoom		: 18,
+		center 		: googleLatLng,
+		scaleControl: false,
+		scrollwheel: false,
+		mapTypeId 	: google.maps.MapTypeId.ROAD,
 		
-	return y;
+	}
+
+	var pMap = document.getElementById("map-canvas");
+
+	var map = new google.maps.Map(pMap, mapOptions);
+	addMarker(map, googleLatLng, "Trolley");
+		
+					});
+		});
 }
-
-

@@ -1,12 +1,13 @@
 <?php
+error_reporting(E_ALL); ini_set('display_errors', '1');
 //require 'vendor/autoload.php';
-require 'config_real.php';
+require 'config.php';
 session_start();
 
  
 
 
-$app->get('/login',  '\Controller\Home:loginForm')->name('loginForm');
+$app->get('/login',  'Controller\Home:loginForm')->name('loginForm');
 
 $app->post('/home','Controller\Home:login')->name('UserLogin');
 $app->post('/signup','Controller\Home:signUp')->name('UserSignup');

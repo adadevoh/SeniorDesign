@@ -2,10 +2,10 @@
 //define app constants here
 require('vendor/autoload.php');
 
-define('DB_NAME', '');
-define('DB_PASS', '');
-define('DB_USER', '');
-define('DB_HOST', '');
+define('DB_NAME', 'seniordesign');
+define('DB_PASS', 'joshada');
+define('DB_USER', 'root');
+define('DB_HOST', '104.131.82.141');
 define('DSN', 'mysql:host ='.DB_HOST.';dbname='.DB_NAME);
 
 define('APP_NAME', 'TestApp');
