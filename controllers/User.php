@@ -32,10 +32,11 @@ class User extends Base{
 		foreach ($locs as $stop => $times) {
 			if(!empty($stop)){
 				for ($i=0; $i<count($times) ; $i++) {//add only if user + location does not exist
-					$temp = \Model\Locations::whereRaw("user = ? and location = ?", [$this->user->email, $stop."-".$times[$i]])->get();
+					$temp = \Model\Locations::whereRaw("user = ? and location = ? and time = ?", [$this->user->email, $stop, $times[$i]])->get();
 					if ($temp->count() == 0) {
 						$locations = \Model\Locations::create(["user"     => $this->user->email,
-														   "location" => $stop."-".$times[$i]]);
+														       "location" => $stop,
+														       "time"     => $times[$i]]);
 					}
 					else{
 						$locErr .= $stop."-".$times[$i]."\n";

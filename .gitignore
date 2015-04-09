@@ -3,3 +3,6 @@ composer.lock
 config_real.php
 /node_modules
 client.js
+nohup.out
+/config
+npm-debug.log
