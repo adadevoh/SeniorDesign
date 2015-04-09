@@ -1,6 +1,6 @@
 /vendor
 composer.lock
-config_real.php
+config.php
 /node_modules
 client.js
 nohup.out
