@@ -65,6 +65,11 @@ function drawChart() {
 				console.log(b);
 				console.log(row.timestamp);
 
+				var data = a +","+ b;
+				var socket = io('http://104.131.82.141:1346');
+				socket.emit('coordinates', data);
+
+
 	var googleLatLng = new google.maps.LatLng(b,
 											  a);
 	var mapOptions = {

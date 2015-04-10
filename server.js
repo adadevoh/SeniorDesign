@@ -71,8 +71,25 @@ app.listen(3000, function(){
 
 
 io.on('connection', function(socket){
-	socket.on('response', function(data){
+	socket.on('coordinates', function(data){
 		console.log(data);
+		data = data.toString();
+		data = data.split(",");
+		console.log(data);
+
+		myFunction(data[0], data[1], 1, 2, "commons");
+
+		//wfit
+		myFunction(data[0], data[1], 1, 2, "wfit");
+
+		//pdh
+		myFunction(data[0], data[1], 1, 2, "pdh");
+
+		//olin
+		myFunction(data[0], data[1], 1, 2, "olin");
+
+		//pOffice
+		myFunction(data[0], data[1], 1, 2, "pOffice");
 	});
 
 });
