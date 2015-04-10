@@ -1,20 +1,20 @@
 var config = require('config').default;
 var net = require('net');
+var io = require('socket.io').listen(1346);
+var mysql = require('mysql');
+var nodemailer = require('nodemailer');
+var express = require('express');
+
+
 var HOST = config.host;
 var PORT = 1345;
-
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+var connection = mysql.createConnection({//create mysql connection
 	host      :  HOST,
 	user      :  config.mysql.user,
 	password  :  config.mysql.password,
 	database  :  config.mysql.database
 });
-
-var nodemailer = require('nodemailer');
-var express = require('express');
 var app = express();
-
 var smtpTrans = nodemailer.createTransport(config.mail.trolley.server,{
 	service: config.mail.trolley.service,
 	auth: {
@@ -23,18 +23,19 @@ var smtpTrans = nodemailer.createTransport(config.mail.trolley.server,{
 	}
 });
 
-var io = require('socket.io').listen(1346);
+//var app = require('express').listen(3000); //why doesn't this work??
 
-function myFunction(lat1, lng1, lat2, lng2, loc) {
-	//console.log("myFunc: "+ lat1 + " " + lng1 + " "+loc);
-
-	if(lat1 < 28.063780 && lng1 < -80.620700 ){//commons
-		var d = new Date();
-		connection.query("SELECT user FROM locations WHERE location = '"+loc+"' AND time LIKE '"+d.getHours()+"%'  ", 
-			function(err, rows, fields){
+function myFunction(loc) {
+	console.log("myFunc");
+	var d = new Date();console.log(d.getHours());
+	connection.query("SELECT user FROM locations WHERE location = '"+loc+"' AND time LIKE '"+d.getHours()+"%'  ", 
+		function(err, rows, fields){
 			if(!err){
 				console.log('the solution is: ', rows);
-				rows.forEach(function(row){
+				console.log(rows.length);
+				
+				if(rows.length > 0){
+					rows.forEach(function(row){///start
 					console.log(row.user);
 					var mailOptions ={
 						to       : row.user,
@@ -49,16 +50,14 @@ function myFunction(lat1, lng1, lat2, lng2, loc) {
 							console.log("message sent: " + response);
 						}
 					});
-				});
+				});//end
 			}
-			else
-				console.log('error with query: ' + err);					
-			});
-	}
+		}
+		else
+			console.log('error with query: ' + err);					
+		});
 }
 
-
-//var app = require('express').listen(3000); //why doesn't this work??
 
 app.listen(3000, function(){
 	console.log('nodemailer started');
@@ -66,45 +65,51 @@ app.listen(3000, function(){
 
 
 
-//create socket io server, and listen on port 1346
-
-
-
 io.on('connection', function(socket){
 	socket.on('coordinates', function(data){
-		console.log(data);
+		console.log("socket.io: "+data);
 		data = data.toString();
 		data = data.split(",");
 		console.log(data);
+		data[0] = data[0] - 1 + 1;// to cenvert it to  decimal
+		data[1] = data[1] - 1 + 1;
+		this.emit('response', 'I received the coordinates: ' + data[0] + ","+data[1] );
 
-		myFunction(data[0], data[1], 1, 2, "commons");
+		if(28.064024 < data[0] && 28.067953 > data[0]){
+			if(data[1] > -80.624901 && data[1] < -80.624896){
+				myFunction("pOffice");
+			}
+		}
 
-		//wfit
-		myFunction(data[0], data[1], 1, 2, "wfit");
+		if(data[0] > 28.063853 && data[0] < 28.063986){
+			if(data[1] > -80.624906 && data[1] < -80.623533){
+				myFunction("pdh");
+				myFunction("olin");
 
-		//pdh
-		myFunction(data[0], data[1], 1, 2, "pdh");
+			}
+		}
+		
+		if(data[0] > 28.062328 && data[0] < 28.063936){
+			if(data[1] > -80.623592 && data[1] < -80.623214){
+				myFunction("pdh");
+				myFunction("olin");
 
-		//olin
-		myFunction(data[0], data[1], 1, 2, "olin");
+			}
+		}
+		if(data[0] > 28.064066 && data[0] < 28.064222){
+			if(data[1] > -80.623254 && data[1] < -80.619971){
+				myFunction("wfit");
+			}
+		}
 
-		//pOffice
-		myFunction(data[0], data[1], 1, 2, "pOffice");
+		if(data[0] > 28.062804 && lat < 28.063985){
+			if (data[1] > -80.621457 && data[1] < -80.620582){
+				myFunction("commons");
+			};
+		}
+
 	});
-
 });
-/*
-//pdh = 28.062745, -80.622921
-olin = 28.062809, -80.623533
-
-commons = 28.063501, -80.620977 ==> <28.063780, <-80.620700
-wfit = 28.064248, -80.623179 ==> >28.064217, <-80.622580
-
-pOffice = 28.065744, -80.624900
-Quad = 28.067609, -80.624627
-*/
-
-
 
 // create tcp server
 net.createServer(function(sock){
@@ -114,32 +119,6 @@ net.createServer(function(sock){
 		console.log('DATA: ' + sock.remoteAddress + ': ' + data);
 
 		sock.write('you said: ' + data);
-
-		data = data.toString();
-		console.log(data)
-
-		data = data.split(",");
-		if(!data){
-			console.log("message");
-		}
-		
-		//commons
-		myFunction(data[0], data[1], 1, 2, "commons");
-
-		//wfit
-		myFunction(data[0], data[1], 1, 2, "wfit");
-
-		//pdh
-		myFunction(data[0], data[1], 1, 2, "pdh");
-
-		//olin
-		myFunction(data[0], data[1], 1, 2, "olin");
-
-		//pOffice
-		myFunction(data[0], data[1], 1, 2, "pOffice");
-
-		//once TCP socket recieves data, the socket.io server forwards it to web client 
-		//io.emit('coordinates', data);
 
 	})
 }).listen(PORT, HOST);

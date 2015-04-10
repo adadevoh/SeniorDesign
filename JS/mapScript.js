@@ -1,5 +1,5 @@
 //var googleMap = require();
-var myVar = setInterval(function(){ drawChart() }, 10000);
+var myVar = setInterval(function(){ drawChart() }, 30000);
 
 $(document).ready(function(){
 	if(navigator.geolocation){
@@ -66,8 +66,11 @@ function drawChart() {
 				console.log(row.timestamp);
 
 				var data = a +","+ b;
-				var socket = io('http://104.131.82.141:1346');
+				var socket = io.connect('http://104.131.82.141:1346');
 				socket.emit('coordinates', data);
+				socket.on('response', function(data){
+					console.log(data);
+				});
 
 
 	var googleLatLng = new google.maps.LatLng(b,
