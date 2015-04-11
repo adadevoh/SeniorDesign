@@ -1,0 +1,12 @@
+{
+	"name": "node-mysql",
+	"version": "0.0.1",
+	"name": "node-mailer",
+	"version": "1.0.0",
+	"dependencies": {
+		"express": "^4.10.6",
+		"mysql": "^2.5.4",
+		"nodemailer": "~0.7.1"
+	}
+
+}

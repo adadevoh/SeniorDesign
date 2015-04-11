@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block UserView %}
+	<div class="ui green compact message" style="color:black; font-family:cursive;">
+		<p>Thank you for using TramSys</p>
+		<p>You have been logged out</p>
+		<p>Simply refresh the page to log in again, or you may do so <a href="{{urlFor('loginForm')}}">here</a></p>
+		
+	</div>
+
+{% endblock %}

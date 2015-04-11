@@ -1,6 +1,5 @@
 {% extends 'layout.html' %}
 {% block UserView %}
-	<div class="column"><!--Sign up or sign in form -->
 		<div class="ui two column middle aligned relaxed fitted stackable grid">
 			<div class="column">
 				<h4 class="ui dividing header">Log in</h4><!-- RETURNING USER -->
@@ -8,9 +7,9 @@
 					<!--without twig == action=“$app->urlFor(‘HomePostRoute’)-->
 					<!--or /sd/home, which is hardcoding the routes, /sd cause thats the root folder -->
 					<div class="field">
-						<label>Username</label>
+						<label>Email</label>
 						<div class="ui left icon input">
-							<input type="text" placeholder="username" name="username" value="">
+							<input type="email" placeholder="username" name="email" value="">
 							<i class="user icon"></i>
 						</div>
 					</div>
@@ -23,6 +22,7 @@
 					</div>
 					<input type="submit" class="ui blue submit button" value="Log In">
 				</form>
+				{% include 'LogInErr.html' %}
 			</div>
 			<div class="ui vertical divider">OR</div>
 			<div class="column">
@@ -65,7 +65,8 @@
 					</div>
 					<input type="submit" class="ui green submit button" value="Sign up">
 				</form>
+				{% include 'SignUpErr.html' %}
 			</div>
 		</div>
-	</div>
+	<!--</div>-->
 {% endblock %}

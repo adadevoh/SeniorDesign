@@ -2,34 +2,71 @@
 <html>
 	<head>
 		<title>Trolley Monitoring System</title>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
 		<link rel="stylesheet" type="text/css" href="vendor/semantic/ui/dist/semantic.css" />
 		<link rel="stylesheet" type="text/css" href="CSS/custom.css" />
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="vendor/components/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="vendor/semantic/ui/dist/semantic.js"></script>
+		<script type="text/javascript" src="JS/mapScript.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.ui.dropdown').
+				dropdown();
+			});
+		</script>
+
+		<script src="http://104.131.82.141:1346/socket.io/socket.io.js"></script>
+
+		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+		<script src="https://www.google.com/jsapi"></script>	
 	</head>
 	<body>
 		<header>
+			<div class="ui header" style="font-size:3em; padding-bottom:1em; font-family:Comic Sans MS">
+				<center>TramSys, the Trolley Monitoring and Notification System</center></div>
 		</header>
 		<div class="main-content">
 			<div class="ui raised segment" id="top-content">
 				<div class="ui grid">
 					<div class="two column row">
-						<div class="column">
+						<div class="column" id="userView">
 							{% block UserView %}<!--can be log in or user console, depending on active session-->
 							{% endblock %}
 						</div>
 						<div class="ui vertical divider"></div>
-						<div class="column">
-							TROLLEY LAST KNOWN LOCATIONS
+
+						<div class="column" id="trolley_loc">
+							{%if isAuth %}
+								<div class="ui blue button" style="float:right">
+									<a style ="color:white" href={{urlFor('logout')}}>
+										logout
+									</a>
+								</div>
+							{% endif %}
+							<img class="ui rounded image" src="views/Trolley1.jpg" style="width:360px; height:240px">
+							<div class="ui header"></div>
 						</div>						
 					</div>
+				</div>
+			</div>
+			<div class="ui raised segment" id="map">
+				<div id = "map-canvas">
+					<center>
+						{% block Map %}
+							
+						{% endblock %}
+					</center>
 				</div>
 			</div>
 		</div>
 		<footer>
 			<div class="ui segment" id="footer">
-				<p>This site is designed, maintained and is the the sole property of Joshua. S. Adadevoh</p>
+				<p>
+					<center style="padding-bottom:1em">
+						Designed by Joshua. S. Adadevoh for Senior Design project with Emeka Umeh and Stephanie Richard-Obire
+					</center>
+				</p>
 			</div>
 		</footer>
 	</body>
