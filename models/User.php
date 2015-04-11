@@ -19,10 +19,10 @@ class User extends \Model\Base{
 
 
 	public function Authenticate($email, $pass){
-		$user = $this->whereRaw("email = ? and password = ?", [$email, $pass])->get();//var_dump($user);
+		$user = $this->whereRaw("email = ? and password = ?", [$email, $pass])->get();
 		
 		if($user->count() == 1){
-			if($user[0]['email'] == $email){//echo $user[0]['email']; die();
+			if($user[0]['email'] == $email){
 				if($user[0]['password'] == $pass){
 					$_SESSION['user_id'] = $user[0]['email'];
 					return true;

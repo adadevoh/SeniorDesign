@@ -7,14 +7,7 @@ class User extends Base{
 		parent::__construct();
 		$this->user = $this->app->user;
 	}
-
-	public function Home(){
-		//render home view
-	}
 	
-	protected function authenticate(){
-		//authentiate user against user in db
-	}
 	public function edit(){
 		$u = $this->app->user;
 		$this->app->render('userEdit.html', array('isAuth' =>true, 'user' => $u));

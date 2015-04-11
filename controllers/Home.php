@@ -58,12 +58,11 @@ class Home extends Base{
 							    "phone" => $this->app->request->params('phone')]);
 
 			$u = \Model\User::find($this->app->request->params('email'));
-			echo"email: ". $u->email;//die();
+			echo"email: ". $u->email;
 
 			$_SESSION['user_id'] = $u->email;
 
 			$this->app->render('user.html', array("user" =>$u));
-			//$this->sendMail();
 		}
 		else{
 			$this->app->flash('signUpErr', "sorry that user already exists, try a different email");

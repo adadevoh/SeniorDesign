@@ -51,13 +51,13 @@ function drawChart() {
 	var public_key = 'KJ6nqR7MX7hbbNd5gz4n';
 
 	 // JSONP request
-	 var jsonData = $.ajax({
+	var jsonData = $.ajax({
 		url: 'https://data.sparkfun.com/output/' + public_key + '/latest.json',
 		data: {page: 1},
 		dataType: 'jsonp',
 		}).done(function (results) {
 				
-	// loop through results and log temperature to the console
+		// loop through results and log temperature to the console
 			$.each(results, function (index, row) {
 				var a =  parseFloat(row.lat);
 				var b =  parseFloat(row.lon);
@@ -73,22 +73,21 @@ function drawChart() {
 				});
 
 
-	var googleLatLng = new google.maps.LatLng(b,
-											  a);
-	var mapOptions = {
-		zoom		: 18,
-		center 		: googleLatLng,
-		scaleControl: false,
-		scrollwheel: false,
-		mapTypeId 	: google.maps.MapTypeId.ROAD,
-		
-	}
+				var googleLatLng = new google.maps.LatLng(b, a);
+				var mapOptions = {
+					zoom		: 18,
+					center 		: googleLatLng,
+					scaleControl: false,
+					scrollwheel: false,
+					mapTypeId 	: google.maps.MapTypeId.ROAD,
+					
+				}
 
-	var pMap = document.getElementById("map-canvas");
+				var pMap = document.getElementById("map-canvas");
 
-	var map = new google.maps.Map(pMap, mapOptions);
-	addMarker(map, googleLatLng, "Trolley");
+				var map = new google.maps.Map(pMap, mapOptions);
+				addMarker(map, googleLatLng, "Trolley");
 		
-					});
+			});
 		});
 }
