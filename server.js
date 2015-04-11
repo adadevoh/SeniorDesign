@@ -25,6 +25,25 @@ var smtpTrans = nodemailer.createTransport(config.mail.trolley.server,{
 
 //var app = require('express').listen(3000); //why doesn't this work??
 
+//testing email function
+/*loc = "pdh";
+var mailOptions ={
+	to       : "jadadevoh2008@fit.edu",
+	subject  : "TramSys Alert",
+	text     : "Hello, the trolley is near "+loc
+}
+smtpTrans.sendMail(mailOptions, function(err, response){
+	if(err){
+		console.log(err);
+	}
+	else{
+		console.log(response);
+	}
+});
+console.log("testing email function");
+*/
+
+
 function myFunction(loc) {
 	console.log("myFunc");
 	var d = new Date();console.log(d.getHours());
@@ -36,7 +55,7 @@ function myFunction(loc) {
 				
 				if(rows.length > 0){
 					rows.forEach(function(row){///start
-					console.log(row.user);
+					console.log(row.user);console.log("sending to "+ row.user);
 					var mailOptions ={
 						to       : row.user,
 						subject  : "TramSys Alert",
@@ -102,7 +121,7 @@ io.on('connection', function(socket){
 			}
 		}
 
-		if(data[0] > 28.062804 && lat < 28.063985){
+		if(data[0] > 28.062804 && data[0] < 28.063985){
 			if (data[1] > -80.621457 && data[1] < -80.620582){
 				myFunction("commons");
 			};

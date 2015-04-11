@@ -1,5 +1,5 @@
 //var googleMap = require();
-var myVar = setInterval(function(){ drawChart() }, 30000);
+var myVar = setInterval(function(){ drawChart() }, 10000);
 
 $(document).ready(function(){
 	if(navigator.geolocation){
@@ -65,7 +65,7 @@ function drawChart() {
 				console.log(b);
 				console.log(row.timestamp);
 
-				var data = a +","+ b;
+				var data = b +","+ a;
 				var socket = io.connect('http://104.131.82.141:1346');
 				socket.emit('coordinates', data);
 				socket.on('response', function(data){
